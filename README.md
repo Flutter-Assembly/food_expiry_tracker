@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Food expiry tracker
 
 Food expiry date tracker
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# food_expiry_tracker
+Food expiry date tracker
+>>>>>>> c9029f61d9d0eb10f047b8dfca7c84d70f56d4a5
