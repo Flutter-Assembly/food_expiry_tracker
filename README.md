@@ -1,4 +1,4 @@
-# food_expiry_tracker
+# Food expiry tracker
 
 Food expiry date tracker
 
