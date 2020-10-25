@@ -8,10 +8,6 @@ import 'package:food_expiry_tracker/ui/core/app_config.dart';
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: AppConfig.app_color
-    ));
-
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
