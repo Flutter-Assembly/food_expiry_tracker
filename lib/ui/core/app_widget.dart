@@ -3,13 +3,13 @@ import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:flutter/services.dart'; 
-import 'package:food_expiry_tracker/ui/core/ui_setting.dart';
+import 'package:food_expiry_tracker/ui/core/app_config.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        statusBarColor: UISetting.app_color
+        statusBarColor: AppConfig.app_color
     ));
 
     return GestureDetector(
@@ -20,7 +20,7 @@ class AppWidget extends StatelessWidget {
         }
       },
       child: MaterialApp(
-        title: UISetting.app_name,
+        title: AppConfig.app_name,
         debugShowCheckedModeBanner: false,
         builder: ExtendedNavigator.builder<AutoRouter>(router: AutoRouter()),
         // ExtendedNavigator(router: Router()),
