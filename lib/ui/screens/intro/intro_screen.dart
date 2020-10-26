@@ -9,7 +9,6 @@ import 'package:food_expiry_tracker/ui/screens/intro/widgets/transformer_pagevie
 import 'package:provider/provider.dart';
 
 class IntroScreen extends StatefulWidget {
-  static String id = 'intro';
   @override
   _IntroScreenState createState() => _IntroScreenState();
 }
