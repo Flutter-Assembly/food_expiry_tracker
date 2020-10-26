@@ -13,6 +13,7 @@ import 'package:food_expiry_tracker/ui/screens/home/home_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/add_food/add_food_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/profile_setting/profile_setting_screen.dart';
 
+
 @MaterialAutoRouter(
   routes: <AutoRoute>[
     AdaptiveRoute(page: SplashScreen, initial: true),
