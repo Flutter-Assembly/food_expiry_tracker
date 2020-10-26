@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "487212410769",
+    "firebase_url": "https://pantryrack-ce32b.firebaseio.com",
+    "project_id": "pantryrack-ce32b",
+    "storage_bucket": "pantryrack-ce32b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487212410769:android:b715c00bb883ef0c9edc30",
+        "android_client_info": {
+          "package_name": "com.flutterassembly.food_expiry_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487212410769-fteq3hvv6gh86fch8ql74cstv42d17qa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flutterassembly.food_expiry_tracker",
+            "certificate_hash": "b2e8b38ed964f19df0f92fb94781d0a84cd5b053"
+          }
+        },
+        {
+          "client_id": "487212410769-53bv7oodh966j4hfmgka9sg533or9jis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtUghY9ZhHTSOFUY4hHX0l9OPaEzFg5Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487212410769-53bv7oodh966j4hfmgka9sg533or9jis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

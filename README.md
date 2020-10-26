@@ -1,6 +1,6 @@
-# Food expiry tracker
+# Food expiry tracker : PantryRack
 
-Food expiry date tracker
+PantryRack is a food expiry date tracker application
 
 ## Getting Started
 

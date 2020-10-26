@@ -9,8 +9,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Welcome Screen'),
+      body: SafeArea(
+        child: Center(
+          child: Text('Welcome Screen'),
+        ),
       ),
     );
   }
