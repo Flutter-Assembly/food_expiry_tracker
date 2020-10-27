@@ -24,7 +24,7 @@ const kAppPadding = 10.0;
 // button text
 const kButtonTextStyle = TextStyle(
     fontFamily: 'Poppins',
-    fontSize: 15.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.w600,
     fontStyle: FontStyle.normal,
     color: Colors.white);
