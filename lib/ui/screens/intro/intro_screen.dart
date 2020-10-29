@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/providers/intro_provider.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
@@ -22,6 +23,12 @@ class _IntroScreenState extends State<IntroScreen> {
         _slideIndex = index;
       },
     );
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
   }
 
   @override

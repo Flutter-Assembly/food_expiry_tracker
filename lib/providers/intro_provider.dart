@@ -13,7 +13,7 @@ class IntroProvider with ChangeNotifier {
       ),
       Intro(
           title: 'Track Food Inventory',
-          description: 'Restocking of food item now made easy with as you get to manage food item quantity',
+          description: 'Restocking of food item now made easy as you get to manage food item quantity',
           image: 'assets/images/slide_image.png'
       ),
       Intro(
