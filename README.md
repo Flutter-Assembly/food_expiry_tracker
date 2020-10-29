@@ -5,14 +5,8 @@
 </div>
 
 <div align="center">
-  Built with Flutter, Provider, and Firebases
+  Built with Flutter, Provider, and Firebase
 </div>
-
-# Screenshots
-<pre>
-
-</pre>
-
 
 ## Key Features
 * __Homepage food list grouped by spaces__ 
@@ -45,3 +39,9 @@
 * __Delete a Food item:__ 
   * Erase the specified food object from sqlite
   * Erase corresponding scheduled notifications 
+
+
+# Screenshots
+<pre>
+
+</pre>
