@@ -15,6 +15,10 @@ const kIndicatorColor = Color.fromRGBO(1, 32, 114, 0.3);
 const kPrimaryTextColor = Color(0xFF151515);
 const kSecondaryTextColor = Color(0xFF454545);
 
+// edges
+const kPrimaryBorder = Color(0xFFC4C4C4);
+const kSecondaryBorder = Color(0xFFE9E9E9);
+
 // spacing
 const kAppMargin = 20.0;
 const kAppPadding = 10.0;
@@ -25,7 +29,7 @@ const kAppPadding = 10.0;
 const kButtonTextStyle = TextStyle(
     fontFamily: 'Poppins',
     fontSize: 14.0,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
     color: Colors.white);
 
