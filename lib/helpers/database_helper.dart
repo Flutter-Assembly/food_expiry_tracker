@@ -32,7 +32,7 @@ class DatabaseHelper {
   _onCreateDB(Database db, int version) async {
     await db.execute('''
       CREATE TABLE ${Food.tblFood}(
-        ${Food.colId} INTERGER PRIMARY KEY AUTOINCREMENT,
+        ${Food.colId} INTEGER PRIMARY KEY AUTOINCREMENT,
         ${Food.colFoodName} TEXT NOT NULL,
         ${Food.colPurchaseDate} TEXT NOT NULL,
         ${Food.colExpiredDate} TEXT NOT NULL,

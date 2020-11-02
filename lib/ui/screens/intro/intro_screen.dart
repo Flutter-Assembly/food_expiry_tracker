@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/providers/intro_provider.dart';
+import 'package:food_expiry_tracker/ui/core/app_title.dart';
+import 'package:food_expiry_tracker/ui/core/button_solid.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 import 'package:food_expiry_tracker/ui/screens/intro/widgets/control_buttons.dart';
@@ -45,18 +47,7 @@ class _IntroScreenState extends State<IntroScreen> {
               Expanded(
                 flex: 1,
                 child: Center(
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Pantry',
-                      style: kHeadingText1.copyWith(color: kPrimaryColor),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Rack',
-                          style: kHeadingText1.copyWith(color: kDeepYellow),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: AppTitle(),
                 ),
               ),
               Expanded(
@@ -97,13 +88,9 @@ class _IntroScreenState extends State<IntroScreen> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: MaterialButton(
-                                color: kPrimaryColor,
-                                height: 40.0,
-                                child: Text(
-                                  'Skip',
-                                  style: kButtonTextStyle,
-                                ),
+                              child: ButtonSolid(
+                                title: 'Skip',
+                                bgColor: kPrimaryColor,
                                 onPressed: () {
                                   ExtendedNavigator.of(context)
                                       .push(Routes.welcomeScreen);
@@ -116,14 +103,10 @@ class _IntroScreenState extends State<IntroScreen> {
                             Expanded(
                               child: this._slideIndex <
                                       intro.introList.length - 1
-                                  ? MaterialButton(
-                                      color: kDeepYellow,
-                                      child: Text(
-                                        'Next',
-                                        style: kButtonTextStyle.copyWith(
-                                            color: kPrimaryColor),
-                                      ),
-                                      height: 40.0,
+                                  ? ButtonSolid(
+                                      title: 'Next',
+                                      bgColor: kDeepYellow,
+                                      textColor: kPrimaryColor,
                                       onPressed: () {
                                         setState(
                                           () {
@@ -136,14 +119,10 @@ class _IntroScreenState extends State<IntroScreen> {
                                         );
                                       },
                                     )
-                                  : MaterialButton(
-                                      color: kDeepYellow,
-                                      child: Text(
-                                        'Get Started',
-                                        style: kButtonTextStyle.copyWith(
-                                            color: kPrimaryColor),
-                                      ),
-                                      height: 40.0,
+                                  : ButtonSolid(
+                                      title: 'Get Started',
+                                      bgColor: kDeepYellow,
+                                      textColor: kPrimaryColor,
                                       onPressed: () {
                                         ExtendedNavigator.of(context)
                                             .push(Routes.welcomeScreen);

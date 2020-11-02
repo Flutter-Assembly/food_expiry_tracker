@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_expiry_tracker/helpers/size_config.dart';
+import 'package:food_expiry_tracker/ui/core/button_outline.dart';
+import 'package:food_expiry_tracker/ui/core/button_solid.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 
@@ -40,7 +42,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   color: Color.fromRGBO(255, 255, 255, 0.71),
                   child: Center(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: SizeConfig.blockSizeHorizontal * 10),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: SizeConfig.blockSizeHorizontal * 10),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,15 +72,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                           Container(
                             width: SizeConfig.blockSizeHorizontal * 80,
-                            child: MaterialButton(
-                              color: kPrimaryColor,
-                              child: Text(
-                                'Create Account',
-                                style: kButtonTextStyle.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              height: 40.0,
+                            child: ButtonSolid(
+                              title: 'Create Account',
+                              bgColor: kPrimaryColor,
                               onPressed: () {
                                 ExtendedNavigator.of(context)
                                     .push(Routes.signupScreen);
@@ -89,15 +86,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ),
                           Container(
                             width: SizeConfig.blockSizeHorizontal * 80,
-                            child: MaterialButton(
-                              color: kDeepYellow,
-                              child: Text(
-                                'Login Now',
-                                style: kButtonTextStyle.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              height: 40.0,
+                            child: ButtonSolid(
+                              title: 'Login Now',
+                              bgColor: kDeepYellow,
                               onPressed: () {
                                 ExtendedNavigator.of(context)
                                     .push(Routes.loginScreen);
