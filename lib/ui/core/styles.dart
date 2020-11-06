@@ -14,10 +14,14 @@ const kIndicatorColor = Color.fromRGBO(1, 32, 114, 0.3);
 // text colors
 const kPrimaryTextColor = Color(0xFF151515);
 const kSecondaryTextColor = Color(0xFF454545);
+const kSecondaryTextColorColor2 = Color(0XFF858585);
 
 // edges
 const kPrimaryBorder = Color(0xFFC4C4C4);
 const kSecondaryBorder = Color(0xFFE9E9E9);
+
+//app bar color
+const kAppBarTextColor = Color(0XFF012072);
 
 // spacing
 const kAppMargin = 20.0;
@@ -84,3 +88,8 @@ const kBodyText4 = TextStyle(
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w400,
     color: kPrimaryTextColor);
+const kAppBarText = TextStyle(
+    color: kAppBarTextColor,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins',
+    fontSize: 18.0);

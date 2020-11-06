@@ -159,8 +159,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   bgColor: kDeepYellow,
                   textColor: kPrimaryColor,
                   onPressed: () async {
-                    if(_formKey.currentState.validate()){
-                        ExtendedNavigator.of(context)
+                    if (_formKey.currentState.validate()) {
+                      ExtendedNavigator.of(context)
                           .popAndPush(Routes.homeScreenController);
                     }
                   },
@@ -172,7 +172,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   textLabel: 'Not yet registered? ',
                   textAction: 'Sign up',
                   onTap: () {
-                    ExtendedNavigator.of(context).popAndPush(Routes.signupScreen);
+                    ExtendedNavigator.of(context)
+                        .popAndPush(Routes.signupScreen);
                   },
                 )
               ],
