@@ -33,7 +33,6 @@ class ButtonOutline extends StatelessWidget {
           color: textColor,
         ),
       ),
-      // height: 40.0,
       onPressed: onPressed,
     );
   }
