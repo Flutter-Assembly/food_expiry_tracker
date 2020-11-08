@@ -59,14 +59,18 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
             currentAccountPicture: GestureDetector(
-              onTap: () => () {},
+              onTap: () => () {
+              //  TODO: Navigate to profile setting
+              },
               child: CircleAvatar(
                 backgroundImage: auth.user.photoURL != null
                     ? NetworkImage(auth.user.photoURL)
                     : ExactAssetImage('assets/images/user.png'),
               ),
             ),
-            onDetailsPressed: () {},
+            onDetailsPressed: () {
+            //  TODO: Implement press
+            },
           ),
           Expanded(
             flex: 2,

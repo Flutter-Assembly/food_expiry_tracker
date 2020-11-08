@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:food_expiry_tracker/models/page_body_model.dart';
+import 'package:food_expiry_tracker/ui/core/app_title.dart';
+import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 import 'package:food_expiry_tracker/ui/screens/favorite/favorite_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/home/home_body.dart';
@@ -12,10 +14,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 class NavigationProvider with ChangeNotifier {
   int _currentIndex;
   String _activeDrawerMenu;
+  PageBody _activePage;
 
   NavigationProvider.initialize() {
     _currentIndex = 0;
     _activeDrawerMenu = Routes.homeScreenController;
+    _activePage = _bottomNavPageList
+        .where((page) => page.routeName == Routes.homeScreenController)
+        .first;
   }
 
   get currentIndex => _currentIndex;
@@ -26,9 +32,13 @@ class NavigationProvider with ChangeNotifier {
   }
 
   get activeDrawerMenu => _activeDrawerMenu;
+  PageBody get activePage => _activePage;
 
   set activeDrawerMenu(String routeName) {
     _activeDrawerMenu = routeName;
+    _activePage = _bottomNavPageList
+        .where((page) => page.routeName == routeName)
+        .first;
     notifyListeners();
   }
 
@@ -40,19 +50,19 @@ class NavigationProvider with ChangeNotifier {
 
   final List<PageBody> _bottomNavPageList = <PageBody>[
     PageBody(
-        title: Text('Home'),
+        title: AppTitle(innerApp: true),
         body: HomeBody(),
         routeName: Routes.homeScreenController),
     PageBody(
-        title: Text('Favorite'),
+        title: AppTitle(innerApp: true),
         body: FavoriteScreen(),
         routeName: Routes.favoriteScreen),
     PageBody(
-        title: Text('Storage Summary'),
+        title: AppTitle(innerApp: true),
         body: StorageSummaryScreen(),
         routeName: Routes.storageSummaryScreen),
     PageBody(
-        title: Text('Settings'),
+        title: AppTitle(innerApp: true),
         body: ProfileSettingScreen(),
         routeName: Routes.profileSettingScreen),
   ];

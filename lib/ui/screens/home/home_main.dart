@@ -49,11 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: _systemBackButtonPressed,
       child: AppScaffold(
-        // drawer: Consumer<NavigationProvider>(
-        //   builder: (context, navigationProvider, child) {
-        //     return AppDrawer(activeMenu: navigationProvider.activeDrawerMenu);
-        //   },
-        // ),
+        title: navigationProvider.activePage.title,
         drawer: AppDrawer(),
         body: IndexedStack(
           index: navigationProvider.currentIndex,
