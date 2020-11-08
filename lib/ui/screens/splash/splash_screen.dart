@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/providers/user_provider.dart';
-import 'package:food_expiry_tracker/ui/screens/home/home_screen.dart';
+import 'package:food_expiry_tracker/ui/screens/home/home_main.dart';
 import 'package:food_expiry_tracker/ui/screens/intro/intro_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/login/login_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/welcome/welcome_screen.dart';
@@ -12,6 +12,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);

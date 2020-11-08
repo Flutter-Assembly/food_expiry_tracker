@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/providers/intro_provider.dart';
 import 'package:food_expiry_tracker/ui/core/app_title.dart';
@@ -47,7 +46,7 @@ class _IntroScreenState extends State<IntroScreen> {
               Expanded(
                 flex: 1,
                 child: Center(
-                  child: AppTitle(),
+                  child:  AppTitle(innerApp: false),
                 ),
               ),
               Expanded(
@@ -93,7 +92,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                 bgColor: kPrimaryColor,
                                 onPressed: () {
                                   ExtendedNavigator.of(context)
-                                      .push(Routes.welcomeScreen);
+                                      .popAndPush(Routes.welcomeScreen);
                                 },
                               ),
                             ),
@@ -125,7 +124,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                       textColor: kPrimaryColor,
                                       onPressed: () {
                                         ExtendedNavigator.of(context)
-                                            .push(Routes.welcomeScreen);
+                                            .popAndPush(Routes.welcomeScreen);
                                       },
                                     ),
                             ),

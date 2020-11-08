@@ -1,13 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/helpers/size_config.dart';
+import 'package:food_expiry_tracker/providers/user_provider.dart';
 import 'package:food_expiry_tracker/ui/core/app_title.dart';
 import 'package:food_expiry_tracker/ui/core/button_solid.dart';
+import 'package:food_expiry_tracker/ui/core/dialog.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 import 'package:food_expiry_tracker/ui/screens/login/widgets/footer_text.dart';
 import 'package:food_expiry_tracker/ui/screens/login/widgets/form_divider.dart';
 import 'package:food_expiry_tracker/ui/screens/login/widgets/google_btn.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
   @override
@@ -15,8 +18,9 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _formKey = GlobalKey<FormState>();
+  final _signupScaffoldKey = GlobalKey<ScaffoldState>();
+  final _signupFormKey = GlobalKey<FormState>();
+  final _dialogSignupKeyLoader = new GlobalKey<State>();
 
   TextEditingController nameController;
   TextEditingController emailController;
@@ -37,12 +41,27 @@ class _SignupScreenState extends State<SignupScreen> {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    nameController = TextEditingController();
+  }
+
+  void displayError(String error) {
+    Navigator.of(_dialogSignupKeyLoader.currentContext,rootNavigator: true).pop();
+    _signupScaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(error),
+        duration: Duration(milliseconds: 2000),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context);
+    final loading = user.status == Status.Authenticating;
+
     return Scaffold(
-      key: _scaffoldKey,
+      key: _signupScaffoldKey,
       resizeToAvoidBottomPadding: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -60,13 +79,13 @@ class _SignupScreenState extends State<SignupScreen> {
             vertical: SizeConfig.blockSizeVertical * 4,
           ),
           child: Form(
-            key: _formKey,
+            key: _signupFormKey,
             child: ListView(
               scrollDirection: Axis.vertical,
               children: [
                 Column(
                   children: [
-                    AppTitle(),
+                    AppTitle(innerApp: false),
                     Text(
                       'Sign up',
                       style: kHeadingText2.copyWith(
@@ -79,7 +98,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: SizeConfig.safeBlockVertical * 5,
                 ),
                 GoogleButton(
-                  onPressed: null,
+                    onPressed: () async {
+                      Dialogs.showLoadingDialog(context, _dialogSignupKeyLoader);
+                      if(!await user.signInWithGoogle()){
+                        displayError(user.errMessage);
+                      }else{
+                        Navigator.of(_dialogSignupKeyLoader.currentContext,rootNavigator: true).pop();
+                        ExtendedNavigator.of(context)
+                            .popAndPush(Routes.homeScreenController);
+                      }
+                    }
                 ),
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 3,
@@ -93,6 +121,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   style: kHeadingText3,
                   textCapitalization: TextCapitalization.words,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: nameController,
                   decoration: InputDecoration(
                     hintText: 'Name',
                     hintStyle: kBodyText4,
@@ -120,6 +149,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   keyboardType: TextInputType.emailAddress,
                   style: kHeadingText3,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: emailController,
                   decoration: InputDecoration(
                     hintText: 'Email',
                     hintStyle: kBodyText4,
@@ -152,6 +182,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   obscureText: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   style: kHeadingText3,
+                  controller: passwordController,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     hintStyle: kBodyText4,
@@ -177,12 +208,17 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 ButtonSolid(
                   title: 'Sign up now',
-                  bgColor: kDeepYellow,
-                  textColor: kPrimaryColor,
-                  onPressed: () {
-                    if(_formKey.currentState.validate()){
-                      ExtendedNavigator.of(context)
-                          .popAndPush(Routes.homeScreenController);
+                  bgColor: kPrimaryColor,
+                  onPressed: () async {
+                    if(_signupFormKey.currentState.validate()){
+                      Dialogs.showLoadingDialog(context, _dialogSignupKeyLoader);
+                      if(!await user.signUp(emailController.text, passwordController.text, nameController.text)){
+                        displayError(user.errMessage);
+                      }else{
+                        Navigator.of(_dialogSignupKeyLoader.currentContext,rootNavigator: true).pop();
+                        ExtendedNavigator.of(context)
+                            .popAndPush(Routes.homeScreenController);
+                      }
                     }
                   },
                 ),

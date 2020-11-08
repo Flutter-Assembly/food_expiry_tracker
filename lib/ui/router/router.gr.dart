@@ -12,9 +12,10 @@ import 'package:flutter/material.dart';
 import '../screens/about/about_screen.dart';
 import '../screens/add_food/add_food_screen.dart';
 import '../screens/faqs/faq_screen.dart';
+import '../screens/favorite/favorite_screen.dart';
 import '../screens/feedback/feedback_screen.dart';
 import '../screens/home/food_detail_screen.dart';
-import '../screens/home/home_screen.dart';
+import '../screens/home/home_main.dart';
 import '../screens/home/home_screen_controller.dart';
 import '../screens/home/storage_detail_screen.dart';
 import '../screens/intro/intro_screen.dart';
@@ -23,7 +24,7 @@ import '../screens/profile_setting/profile_setting_screen.dart';
 import '../screens/search/search_screen.dart';
 import '../screens/signup/signup_screen.dart';
 import '../screens/splash/splash_screen.dart';
-import '../screens/usage_summary/usage_summary_screen.dart';
+import '../screens/storage_summary/storage_summary_screen.dart';
 import '../screens/welcome/welcome_screen.dart';
 
 class Routes {
@@ -34,8 +35,9 @@ class Routes {
   static const String signupScreen = '/signup-screen';
   static const String homeScreenController = '/home-screen-controller';
   static const String addFoodScreen = '/add-food-screen';
+  static const String favoriteScreen = '/favorite-screen';
   static const String profileSettingScreen = '/profile-setting-screen';
-  static const String usageSummaryScreen = '/usage-summary-screen';
+  static const String storageSummaryScreen = '/storage-summary-screen';
   static const String searchScreen = '/search-screen';
   static const String aboutScreen = '/about-screen';
   static const String faqScreen = '/faq-screen';
@@ -48,8 +50,9 @@ class Routes {
     signupScreen,
     homeScreenController,
     addFoodScreen,
+    favoriteScreen,
     profileSettingScreen,
-    usageSummaryScreen,
+    storageSummaryScreen,
     searchScreen,
     aboutScreen,
     faqScreen,
@@ -72,8 +75,9 @@ class AutoRouter extends RouterBase {
       generator: HomeScreenControllerRouter(),
     ),
     RouteDef(Routes.addFoodScreen, page: AddFoodScreen),
+    RouteDef(Routes.favoriteScreen, page: FavoriteScreen),
     RouteDef(Routes.profileSettingScreen, page: ProfileSettingScreen),
-    RouteDef(Routes.usageSummaryScreen, page: UsageSummaryScreen),
+    RouteDef(Routes.storageSummaryScreen, page: StorageSummaryScreen),
     RouteDef(Routes.searchScreen, page: SearchScreen),
     RouteDef(Routes.aboutScreen, page: AboutScreen),
     RouteDef(Routes.faqScreen, page: FaqScreen),
@@ -132,6 +136,14 @@ class AutoRouter extends RouterBase {
         transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
+    FavoriteScreen: (data) {
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            FavoriteScreen(),
+        settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+      );
+    },
     ProfileSettingScreen: (data) {
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
@@ -140,10 +152,10 @@ class AutoRouter extends RouterBase {
         transitionsBuilder: TransitionsBuilders.fadeIn,
       );
     },
-    UsageSummaryScreen: (data) {
+    StorageSummaryScreen: (data) {
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
-            UsageSummaryScreen(),
+            StorageSummaryScreen(),
         settings: data,
         transitionsBuilder: TransitionsBuilders.fadeIn,
       );
@@ -152,7 +164,7 @@ class AutoRouter extends RouterBase {
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) => SearchScreen(),
         settings: data,
-        transitionsBuilder: TransitionsBuilders.fadeIn,
+        transitionsBuilder: TransitionsBuilders.slideBottom,
       );
     },
     AboutScreen: (data) {

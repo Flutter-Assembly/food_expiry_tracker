@@ -4,6 +4,7 @@ import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/providers/user_provider.dart';
 import 'package:food_expiry_tracker/ui/core/app_title.dart';
 import 'package:food_expiry_tracker/ui/core/button_solid.dart';
+import 'package:food_expiry_tracker/ui/core/dialog.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 import 'package:food_expiry_tracker/ui/screens/login/widgets/footer_text.dart';
@@ -17,8 +18,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _formKey = GlobalKey<FormState>();
+  final _loginScaffoldKey = GlobalKey<ScaffoldState>();
+  final _loginFormKey = GlobalKey<FormState>();
+  final _dialogKeyLoader = new GlobalKey<State>();
 
   TextEditingController emailController;
   TextEditingController passwordController;
@@ -39,13 +41,24 @@ class _LoginScreenState extends State<LoginScreen> {
     passwordController = TextEditingController();
   }
 
+  void displayError(String error) {
+    Navigator.of(_dialogKeyLoader.currentContext,rootNavigator: true).pop();
+    _loginScaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(error),
+        duration: Duration(milliseconds: 2000),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context);
     final loading = user.status == Status.Authenticating;
 
     return Scaffold(
-      key: _scaffoldKey,
+      key: _loginScaffoldKey,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -62,13 +75,13 @@ class _LoginScreenState extends State<LoginScreen> {
             vertical: SizeConfig.blockSizeVertical * 4,
           ),
           child: Form(
-            key: _formKey,
+            key: _loginFormKey,
             child: ListView(
               scrollDirection: Axis.vertical,
               children: [
                 Column(
                   children: [
-                    AppTitle(),
+                    AppTitle(innerApp: false),
                     Text(
                       'Sign In',
                       style: kHeadingText2.copyWith(
@@ -82,8 +95,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GoogleButton(
                   onPressed: () async {
-                    ExtendedNavigator.of(context)
-                        .popAndPush(Routes.homeScreenController);
+                    Dialogs.showLoadingDialog(context, _dialogKeyLoader);
+                    if(!await user.signInWithGoogle()){
+                      displayError(user.errMessage);
+                    }else{
+                      Navigator.of(_dialogKeyLoader.currentContext,rootNavigator: true).pop();//close the dialog
+                      ExtendedNavigator.of(context)
+                          .popAndPush(Routes.homeScreenController);
+                    }
                   },
                 ),
                 SizedBox(
@@ -156,12 +175,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 ButtonSolid(
                   title: 'Sign in now',
-                  bgColor: kDeepYellow,
-                  textColor: kPrimaryColor,
+                  bgColor: kPrimaryColor,
                   onPressed: () async {
-                    if (_formKey.currentState.validate()) {
-                      ExtendedNavigator.of(context)
-                          .popAndPush(Routes.homeScreenController);
+                    if(_loginFormKey.currentState.validate()){
+                      Dialogs.showLoadingDialog(context, _dialogKeyLoader);
+                      if(!await user.signIn(emailController.text, passwordController.text)){
+                        displayError(user.errMessage);
+                      }else{
+                        Navigator.of(_dialogKeyLoader.currentContext,rootNavigator: true).pop();//close the dialog
+                        ExtendedNavigator.of(context)
+                            .popAndPush(Routes.homeScreenController);
+                      }
                     }
                   },
                 ),
@@ -184,3 +208,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
