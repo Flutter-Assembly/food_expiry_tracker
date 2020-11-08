@@ -1,7 +1,7 @@
 <h1 align="center">Food expiry tracker : PantryRack</h1>
 
 <div align="center">
-  <strong>An Offline Food Expiry Date Reminder</strong>
+  <strong>A Food Expiry Date Reminder</strong>
 </div>
 
 <div align="center">
@@ -41,7 +41,4 @@
   * Erase corresponding scheduled notifications 
 
 
-# Screenshots
-<pre>
-
-</pre>
+# Screenshots 

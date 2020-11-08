@@ -8,8 +8,8 @@ class ProfileSettingScreen extends StatefulWidget {
 class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Container(
+      child: Center(
         child: Text('ProfileSetting Screen'),
       ),
     );

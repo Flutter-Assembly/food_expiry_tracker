@@ -77,7 +77,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               bgColor: kPrimaryColor,
                               onPressed: () {
                                 ExtendedNavigator.of(context)
-                                    .push(Routes.signupScreen);
+                                    .popAndPush(Routes.signupScreen);
                               },
                             ),
                           ),
@@ -91,7 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               bgColor: kDeepYellow,
                               onPressed: () {
                                 ExtendedNavigator.of(context)
-                                    .push(Routes.loginScreen);
+                                    .popAndPush(Routes.loginScreen);
                               },
                             ),
                           ),
