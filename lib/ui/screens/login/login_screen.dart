@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void displayError(String error) {
-    Navigator.of(_dialogKeyLoader.currentContext,rootNavigator: true).pop();
+    Navigator.of(_dialogKeyLoader.currentContext, rootNavigator: true).pop();
     _loginScaffoldKey.currentState.showSnackBar(
       SnackBar(
         backgroundColor: Colors.red,
@@ -96,10 +96,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 GoogleButton(
                   onPressed: () async {
                     Dialogs.showLoadingDialog(context, _dialogKeyLoader);
-                    if(!await user.signInWithGoogle()){
+                    if (!await user.signInWithGoogle()) {
                       displayError(user.errMessage);
-                    }else{
-                      Navigator.of(_dialogKeyLoader.currentContext,rootNavigator: true).pop();//close the dialog
+                      print('NOT SIGNED IN');
+                    } else {
+                      print('SIGNED IN');
+                      Navigator.of(_dialogKeyLoader.currentContext,
+                              rootNavigator: true)
+                          .pop(); //close the dialog
                       ExtendedNavigator.of(context)
                           .popAndPush(Routes.homeScreenController);
                     }
@@ -177,12 +181,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: 'Sign in now',
                   bgColor: kPrimaryColor,
                   onPressed: () async {
-                    if(_loginFormKey.currentState.validate()){
+                    if (_loginFormKey.currentState.validate()) {
                       Dialogs.showLoadingDialog(context, _dialogKeyLoader);
-                      if(!await user.signIn(emailController.text, passwordController.text)){
+                      if (!await user.signIn(
+                          emailController.text, passwordController.text)) {
                         displayError(user.errMessage);
-                      }else{
-                        Navigator.of(_dialogKeyLoader.currentContext,rootNavigator: true).pop();//close the dialog
+                      } else {
+                        Navigator.of(_dialogKeyLoader.currentContext,
+                                rootNavigator: true)
+                            .pop(); //close the dialog
                         ExtendedNavigator.of(context)
                             .popAndPush(Routes.homeScreenController);
                       }
@@ -208,4 +215,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-

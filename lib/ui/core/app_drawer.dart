@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/models/drawer_menu_model.dart';
 import 'package:food_expiry_tracker/providers/navigation_provider.dart';
@@ -22,9 +23,9 @@ class _AppDrawerState extends State<AppDrawer> {
       Provider.of<NavigationProvider>(context, listen: false)
           .setCurrentIndexByRouteName(activeMenu.menuRoute);
     } else {
-      Navigator.pushNamed(context, '${activeMenu.menuRoute}');
+      // Navigator.pushNamed(context, '${activeMenu.menuRoute}');
+      ExtendedNavigator.of(context).push('${activeMenu.menuRoute}');
     }
-
   }
 
   @override
@@ -60,7 +61,7 @@ class _AppDrawerState extends State<AppDrawer> {
             ),
             currentAccountPicture: GestureDetector(
               onTap: () => () {
-              //  TODO: Navigate to profile setting
+                //  TODO: Navigate to profile setting
               },
               child: CircleAvatar(
                 backgroundImage: auth.user.photoURL != null
@@ -69,7 +70,7 @@ class _AppDrawerState extends State<AppDrawer> {
               ),
             ),
             onDetailsPressed: () {
-            //  TODO: Implement press
+              //  TODO: Implement press
             },
           ),
           Expanded(

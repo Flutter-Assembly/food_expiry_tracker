@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>487212410769-g2sj6rfi74ji6mi2t5v972uhqgm3g1m4.apps.googleusercontent.com</string>
+	<string>670549898987-mhohjm6penpt4c0en2l3ss50hsi86m62.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.487212410769-g2sj6rfi74ji6mi2t5v972uhqgm3g1m4</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>487212410769-fteq3hvv6gh86fch8ql74cstv42d17qa.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.670549898987-mhohjm6penpt4c0en2l3ss50hsi86m62</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBmDC1Nc21JlRr_3J9E4MCXZ3UhsWWjLjw</string>
+	<string>AIzaSyDuPXfLhzsqdvkx92oUUSD7rxwq6bv1-X4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>487212410769</string>
+	<string>670549898987</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.flutterassembly.foodExpiryTracker</string>
+	<string>com.flutterassembly.foodexpirytracker</string>
 	<key>PROJECT_ID</key>
-	<string>pantryrack-ce32b</string>
+	<string>pantryrack-4dae9</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pantryrack-ce32b.appspot.com</string>
+	<string>pantryrack-4dae9.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:487212410769:ios:53b71706d6b1e0d89edc30</string>
+	<string>1:670549898987:ios:ba29e930674e97b42830ae</string>
 	<key>DATABASE_URL</key>
-	<string>https://pantryrack-ce32b.firebaseio.com</string>
+	<string>https://pantryrack-4dae9.firebaseio.com</string>
 </dict>
 </plist>

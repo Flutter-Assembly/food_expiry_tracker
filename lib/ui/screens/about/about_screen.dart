@@ -1,7 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/ui/core/app_config.dart';
+import 'package:food_expiry_tracker/ui/core/app_scaffold.dart';
 import 'package:food_expiry_tracker/ui/core/app_title.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
+import 'package:food_expiry_tracker/ui/screens/about/widgets/app_details.dart';
 
 class AboutScreen extends StatefulWidget {
   @override
@@ -15,18 +18,13 @@ class _AboutScreenState extends State<AboutScreen> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Colors.transparent,
-        leadingWidth: 22.0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
-          child: Icon(
-            Icons.chevron_left,
-            color: kDeepYellow,
-            size: 32.0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            size: 28.0,
           ),
-        ),
-        title: Text(
-          'Back',
-          style: kAppBarText,
+          color: Colors.black,
+          onPressed: () => ExtendedNavigator.of(context).pop(),
         ),
       ),
       body: Padding(
@@ -67,44 +65,6 @@ class _AboutScreenState extends State<AboutScreen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-//To show Title and Description of App details in a Row.
-class AppDetails extends StatelessWidget {
-  final String title;
-  final String description;
-
-  AppDetails({@required this.title, @required this.description});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Divider(
-          color: kPrimaryBorder,
-          thickness: 1.0,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: kAppBarText.copyWith(color: kSecondaryTextColor),
-            ),
-            Text(
-              description,
-              style: kBodyText1.copyWith(
-                  color: kSecondaryTextColorColor2, fontSize: 14.0),
-            ),
-          ],
-        ),
-        Divider(
-          color: kPrimaryBorder,
-          thickness: 1.0,
-        )
-      ],
     );
   }
 }
