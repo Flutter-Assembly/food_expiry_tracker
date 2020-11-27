@@ -88,6 +88,18 @@ const kBodyText4 = TextStyle(
     fontStyle: FontStyle.normal,
     fontWeight: FontWeight.w400,
     color: kPrimaryTextColor);
+const kBodyText5 = TextStyle(
+    fontSize: 14.0,
+    fontFamily: 'Poppins',
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w500,
+    color: kSecondaryTextColor);
+const kBodyText6 = TextStyle(
+    fontSize: 16.0,
+    fontFamily: 'Poppins',
+    fontStyle: FontStyle.normal,
+    fontWeight: FontWeight.w700,
+    color: Colors.white);
 const kAppBarText = TextStyle(
     color: kAppBarTextColor,
     fontWeight: FontWeight.w500,

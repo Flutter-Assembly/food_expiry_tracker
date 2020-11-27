@@ -55,14 +55,14 @@ import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 ExtendedNavigator.of(context).push(Routes.NotificationScreen);
 ```
 
-> Check [auto_toute](https://pub.dev/packages/auto_route) for guide on adding route 
+> Check [auto_route](https://pub.dev/packages/auto_route) for guide on adding route
 
 ## Customizing a page with the AppScaffold widget
 
 The **AppScaffold** is used as a custom housing to allow easy configuration of standalone or 
 home level screen. Check `lib/ui/home/home_screen` for an example
 
-* Standalone screens: These are screen that may not contain bottonNavBar. 
+* Standalone screens: These are screen that may not contain bottomNavBar.
 Their links are mostly accessible through drawer or sub page level.
 Example is AboutScreen, FaQsScreen etc
 
