@@ -34,10 +34,10 @@ Widget buildFoodCategories(BuildContext context, String selectedCategory) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        buildFoodCategory(context, 'Grocery', 'assets/Grocery_2.svg', 'assets/Grocery_1.svg', selectedCategory == 'Grocery'),
-        buildFoodCategory(context, 'Provisions', 'assets/provision_2.svg', 'assets/provision_1.svg', selectedCategory == 'Provisions'),
-        buildFoodCategory(context, 'Fruits', 'assets/fruits_2.svg', 'assets/fruits_1.svg', selectedCategory == 'Fruits'),
-        buildFoodCategory(context, 'Fast Food', 'assets/fast_food_2.svg', 'assets/fast_food_1.svg', selectedCategory == 'Fast Food'),
+        buildFoodCategory(context, 'Grocery', 'assets/images/Grocery_2.svg', 'assets/Grocery_1.svg', selectedCategory == 'Grocery'),
+        buildFoodCategory(context, 'Provisions', 'assets/images/provision_2.svg', 'assets/provision_1.svg', selectedCategory == 'Provisions'),
+        buildFoodCategory(context, 'Fruits', 'assets/images/fruits_2.svg', 'assets/fruits_1.svg', selectedCategory == 'Fruits'),
+        buildFoodCategory(context, 'Fast Food', 'assets/images/fast_food_2.svg', 'assets/fast_food_1.svg', selectedCategory == 'Fast Food'),
       ],
     ),
   );
@@ -209,35 +209,35 @@ Widget buildSelectStorageLocation(BuildContext context, int value) {
       items: [
         DropdownMenuItem(
           child: ListTile(
-            leading: SvgPicture.asset('assets/fridge.svg'),
+            leading: SvgPicture.asset('assets/images/fridge.svg'),
             title: Text('Fridge', style: t6),
           ),
           value: 1,
         ),
         DropdownMenuItem(
           child: ListTile(
-            leading: SvgPicture.asset('assets/fridge.svg'),
+            leading: SvgPicture.asset('assets/images/fridge.svg'),
             title: Text('Freezer', style: t6),
           ),
           value: 2,
         ),
         DropdownMenuItem(
           child: ListTile(
-            leading: SvgPicture.asset('assets/storage_room.svg'),
+            leading: SvgPicture.asset('assets/images/storage_room.svg'),
             title: Text('Storage Room', style: t6),
           ),
           value: 3
         ),
         DropdownMenuItem(
           child: ListTile(
-            leading: SvgPicture.asset('assets/pantry.svg'),
+            leading: SvgPicture.asset('assets/images/pantry.svg'),
             title: Text('Pantry', style: t6),
           ),
           value: 4
         ),
         DropdownMenuItem(
           child: ListTile(
-            leading: SvgPicture.asset('assets/medicine_cabinet.svg'),
+            leading: SvgPicture.asset('assets/images/medicine_cabinet.svg'),
             title: Text('Medicine cabinet', style: t6),
           ),
           value: 5
@@ -307,12 +307,12 @@ addPhotoDialog(BuildContext context) {
         content: Wrap(
           children: [
             ListTile(
-              leading: SvgPicture.asset('assets/from_camera.svg'),
+              leading: SvgPicture.asset('assets/images/from_camera.svg'),
               title: Text('Take photo', style: t6,),
             ),
 
             ListTile(
-              leading: SvgPicture.asset('assets/add_from_gallery.svg'),
+              leading: SvgPicture.asset('assets/images/add_from_gallery.svg'),
               title: Text('Choose image from gallery', style: t6,)
             )
           ]
