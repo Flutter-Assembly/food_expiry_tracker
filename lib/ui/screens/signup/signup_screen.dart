@@ -62,7 +62,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
     return Scaffold(
       key: _signupScaffoldKey,
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
