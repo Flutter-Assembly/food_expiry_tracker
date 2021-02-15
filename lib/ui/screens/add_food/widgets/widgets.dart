@@ -194,6 +194,10 @@ String shortenedQuantityDescription(BuildContext context) {
     case 'unit':
       short = 'un';
       break;
+      
+    default:
+      short = '';
+      break;
   }
 
   return short;
