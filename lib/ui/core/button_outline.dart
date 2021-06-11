@@ -16,16 +16,13 @@ class ButtonOutline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  OutlineButton(
-      borderSide: BorderSide(
-          color: borderColor,
-          width: 1,
-          style: BorderStyle.solid
-      ),
+    return OutlineButton(
+      borderSide:
+          BorderSide(color: borderColor, width: 1, style: BorderStyle.solid),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(5.0),
       ),
-      highlightedBorderColor: kDeepYellow,
+      highlightedBorderColor: kPrimaryYellow,
       highlightElevation: 2.0,
       child: Text(
         title,

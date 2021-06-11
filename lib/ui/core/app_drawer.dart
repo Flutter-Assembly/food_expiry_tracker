@@ -88,11 +88,11 @@ class _AppDrawerState extends State<AppDrawer> {
                     ? ListTile(
                         title: Text(
                           '${drawer.menuList[index].menuName}',
-                          style: TextStyle(color: kDeepYellow),
+                          style: TextStyle(color: kPrimaryYellow),
                         ),
                         leading: Icon(
                           drawer.menuList[index].menuIcon,
-                          color: kDeepYellow,
+                          color: kPrimaryYellow,
                         ),
                         onTap: () =>
                             _navigateToScreen(context, drawer.menuList[index]),

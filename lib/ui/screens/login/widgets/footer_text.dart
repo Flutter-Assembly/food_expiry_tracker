@@ -21,9 +21,8 @@ class FooterText extends StatelessWidget {
           children: <TextSpan>[
             TextSpan(
               text: textAction,
-              style: kBodyText4.copyWith(color: kDeepYellow),
-              recognizer: TapGestureRecognizer()
-                ..onTap = onTap,
+              style: kBodyText4.copyWith(color: kPrimaryYellow),
+              recognizer: TapGestureRecognizer()..onTap = onTap,
             ),
           ],
         ),

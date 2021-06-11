@@ -88,7 +88,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             width: SizeConfig.blockSizeHorizontal * 80,
                             child: ButtonSolid(
                               title: 'Login Now',
-                              bgColor: kDeepYellow,
+                              bgColor: kPrimaryYellow,
                               onPressed: () {
                                 ExtendedNavigator.of(context)
                                     .popAndPush(Routes.loginScreen);

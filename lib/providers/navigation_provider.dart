@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:food_expiry_tracker/models/page_body_model.dart';
 import 'package:food_expiry_tracker/ui/core/app_title.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
@@ -9,7 +7,6 @@ import 'package:food_expiry_tracker/ui/screens/favorite/favorite_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/home/home_body.dart';
 import 'package:food_expiry_tracker/ui/screens/profile_setting/profile_setting_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/storage_summary/storage_summary_screen.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class NavigationProvider with ChangeNotifier {
   int _currentIndex;
@@ -36,9 +33,8 @@ class NavigationProvider with ChangeNotifier {
 
   set activeDrawerMenu(String routeName) {
     _activeDrawerMenu = routeName;
-    _activePage = _bottomNavPageList
-        .where((page) => page.routeName == routeName)
-        .first;
+    _activePage =
+        _bottomNavPageList.where((page) => page.routeName == routeName).first;
     notifyListeners();
   }
 
@@ -62,9 +58,9 @@ class NavigationProvider with ChangeNotifier {
         body: StorageSummaryScreen(),
         routeName: Routes.storageSummaryScreen),
     PageBody(
-        title: AppTitle(innerApp: true),
-        body: ProfileSettingScreen(),
-        routeName: Routes.profileSettingScreen),
+      title: AppTitle(innerApp: true),
+      body: Center(child: Text('Settings Page.')),
+    ),
   ];
 
   get bottomNavBodyList => _bottomNavPageList;
