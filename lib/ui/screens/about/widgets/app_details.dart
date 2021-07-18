@@ -26,7 +26,7 @@ class AppDetails extends StatelessWidget {
             Text(
               description,
               style: kBodyText1.copyWith(
-                  color: kSecondaryTextColorColor2, fontSize: 14.0),
+                  color: kSecondaryTextColor2, fontSize: 14.0),
             ),
           ],
         ),

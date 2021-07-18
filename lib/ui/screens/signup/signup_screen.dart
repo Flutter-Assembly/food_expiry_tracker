@@ -45,7 +45,8 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void displayError(String error) {
-    Navigator.of(_dialogSignupKeyLoader.currentContext,rootNavigator: true).pop();
+    Navigator.of(_dialogSignupKeyLoader.currentContext, rootNavigator: true)
+        .pop();
     _signupScaffoldKey.currentState.showSnackBar(
       SnackBar(
         backgroundColor: Colors.red,
@@ -97,18 +98,18 @@ class _SignupScreenState extends State<SignupScreen> {
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 5,
                 ),
-                GoogleButton(
-                    onPressed: () async {
-                      Dialogs.showLoadingDialog(context, _dialogSignupKeyLoader);
-                      if(!await user.signInWithGoogle()){
-                        displayError(user.errMessage);
-                      }else{
-                        Navigator.of(_dialogSignupKeyLoader.currentContext,rootNavigator: true).pop();
-                        ExtendedNavigator.of(context)
-                            .popAndPush(Routes.homeScreenController);
-                      }
-                    }
-                ),
+                GoogleButton(onPressed: () async {
+                  Dialogs.showLoadingDialog(context, _dialogSignupKeyLoader);
+                  if (!await user.signInWithGoogle()) {
+                    displayError(user.errMessage);
+                  } else {
+                    Navigator.of(_dialogSignupKeyLoader.currentContext,
+                            rootNavigator: true)
+                        .pop();
+                    ExtendedNavigator.of(context)
+                        .popAndPush(Routes.homeScreenController);
+                  }
+                }),
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 3,
                 ),
@@ -210,12 +211,16 @@ class _SignupScreenState extends State<SignupScreen> {
                   title: 'Sign up now',
                   bgColor: kPrimaryColor,
                   onPressed: () async {
-                    if(_signupFormKey.currentState.validate()){
-                      Dialogs.showLoadingDialog(context, _dialogSignupKeyLoader);
-                      if(!await user.signUp(emailController.text, passwordController.text, nameController.text)){
+                    if (_signupFormKey.currentState.validate()) {
+                      Dialogs.showLoadingDialog(
+                          context, _dialogSignupKeyLoader);
+                      if (!await user.signUp(emailController.text,
+                          passwordController.text, nameController.text)) {
                         displayError(user.errMessage);
-                      }else{
-                        Navigator.of(_dialogSignupKeyLoader.currentContext,rootNavigator: true).pop();
+                      } else {
+                        Navigator.of(_dialogSignupKeyLoader.currentContext,
+                                rootNavigator: true)
+                            .pop();
                         ExtendedNavigator.of(context)
                             .popAndPush(Routes.homeScreenController);
                       }
@@ -229,7 +234,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   textLabel: 'Already registered? ',
                   textAction: 'Sign in',
                   onTap: () {
-                    ExtendedNavigator.of(context).popAndPush(Routes.loginScreen);
+                    ExtendedNavigator.of(context)
+                        .popAndPush(Routes.loginScreen);
                   },
                 )
               ],

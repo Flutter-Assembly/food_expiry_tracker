@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route_annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:food_expiry_tracker/ui/screens/about/about_screen.dart';
+import 'package:food_expiry_tracker/ui/screens/edit_profile_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/faqs/faq_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/favorite/favorite_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/feedback/feedback_screen.dart';
@@ -54,9 +55,7 @@ import 'package:food_expiry_tracker/ui/screens/profile_setting/profile_setting_s
         page: AddFoodScreen, transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(
         page: FavoriteScreen, transitionsBuilder: TransitionsBuilders.fadeIn),
-    CustomRoute(
-        page: ProfileSettingScreen,
-        transitionsBuilder: TransitionsBuilders.fadeIn),
+
     CustomRoute(
         page: StorageSummaryScreen,
         transitionsBuilder: TransitionsBuilders.fadeIn),
@@ -73,6 +72,12 @@ import 'package:food_expiry_tracker/ui/screens/profile_setting/profile_setting_s
         page: FeedbackScreen, transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(
         page: FoodDetailsScreen,
+        transitionsBuilder: TransitionsBuilders.fadeIn),
+    CustomRoute(
+        page: ProfileSettingScreen,
+        transitionsBuilder: TransitionsBuilders.fadeIn),
+    CustomRoute(
+        page: EditProfileScreen,
         transitionsBuilder: TransitionsBuilders.fadeIn),
   ],
 )

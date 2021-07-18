@@ -53,7 +53,7 @@ class _AboutScreenState extends State<AboutScreen> {
                   child: Text(
                     _descriptionText,
                     style: kBodyText1.copyWith(
-                        color: kSecondaryTextColorColor2, fontSize: 14.0),
+                        color: kSecondaryTextColor2, fontSize: 14.0),
                   ),
                 ),
               ],

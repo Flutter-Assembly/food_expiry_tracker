@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 
 import '../screens/about/about_screen.dart';
 import '../screens/add_food/add_food_screen.dart';
+import '../screens/edit_profile_screen.dart';
 import '../screens/faqs/faq_screen.dart';
 import '../screens/favorite/favorite_screen.dart';
 import '../screens/feedback/feedback_screen.dart';
@@ -44,6 +45,7 @@ class Routes {
   static const String faqScreen = '/faq-screen';
   static const String feedbackScreen = '/feedback-screen';
   static const String foodDetailsScreen = '/food-details-screen';
+  static const String editProfileScreen = '/edit-profile-screen';
   static const all = <String>{
     splashScreen,
     introScreen,
@@ -60,6 +62,7 @@ class Routes {
     faqScreen,
     feedbackScreen,
     foodDetailsScreen,
+    editProfileScreen,
   };
 }
 
@@ -86,6 +89,7 @@ class AutoRouter extends RouterBase {
     RouteDef(Routes.faqScreen, page: FaqScreen),
     RouteDef(Routes.feedbackScreen, page: FeedbackScreen),
     RouteDef(Routes.foodDetailsScreen, page: FoodDetailsScreen),
+    RouteDef(Routes.editProfileScreen, page: EditProfileScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -197,6 +201,14 @@ class AutoRouter extends RouterBase {
       return PageRouteBuilder<dynamic>(
         pageBuilder: (context, animation, secondaryAnimation) =>
             FoodDetailsScreen(),
+        settings: data,
+        transitionsBuilder: TransitionsBuilders.fadeIn,
+      );
+    },
+    EditProfileScreen: (data) {
+      return PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            EditProfileScreen(),
         settings: data,
         transitionsBuilder: TransitionsBuilders.fadeIn,
       );

@@ -26,8 +26,8 @@ class _HomeBodyState extends State<HomeBody> {
               await auth.signOut();
             },
             title: 'Logout',
-            textColor: kDeepYellow,
-            borderColor: kDeepYellow,
+            textColor: kPrimaryYellow,
+            borderColor: kPrimaryYellow,
           )
         ],
       ),

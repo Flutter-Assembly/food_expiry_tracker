@@ -20,14 +20,14 @@ class AppScaffold extends StatefulWidget {
 
   const AppScaffold(
       {Key key,
-        @required this.body,
-        @required this.title,
-        this.leading,
-        this.tabBar,
-        this.footer,
-        this.fab,
-        this.fabLocation,
-        this.drawer})
+      @required this.body,
+      @required this.title,
+      this.leading,
+      this.tabBar,
+      this.footer,
+      this.fab,
+      this.fabLocation,
+      this.drawer})
       : super(key: key);
 
   @override
@@ -50,20 +50,24 @@ class _AppScaffoldState extends State<AppScaffold> {
           key: _scaffoldKey,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
-            elevation: defaultTargetPlatform == TargetPlatform.android ? 0.0 : 0.0,
+            elevation:
+                defaultTargetPlatform == TargetPlatform.android ? 0.0 : 0.0,
             centerTitle: true,
             bottom: widget.tabBar != null ? widget.tabBar : null,
-            title: widget.title != null ? widget.title : AppTitle(innerApp: true),
-            leading: widget.leading != null ? widget.leading : IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Color(0xFF878787),
-                size: 32,
-              ),
-              onPressed: (){
-                _scaffoldKey.currentState.openDrawer();
-              },
-            ),
+            title:
+                widget.title != null ? widget.title : AppTitle(innerApp: true),
+            leading: widget.leading != null
+                ? widget.leading
+                : IconButton(
+                    icon: Icon(
+                      Icons.menu,
+                      color: Color(0xFF878787),
+                      size: 32,
+                    ),
+                    onPressed: () {
+                      _scaffoldKey.currentState.openDrawer();
+                    },
+                  ),
             actions: [
               InkResponse(
                 child: Container(
@@ -73,7 +77,7 @@ class _AppScaffoldState extends State<AppScaffold> {
                     size: 32,
                   ),
                 ),
-                onTap: (){
+                onTap: () {
                   ExtendedNavigator.of(context).push(Routes.searchScreen);
                 },
               ),
@@ -88,14 +92,17 @@ class _AppScaffoldState extends State<AppScaffold> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: auth.user.photoURL != null
-                          ? NetworkImage(auth.user.photoURL) : ExactAssetImage('assets/images/user.png'),
+                          ? NetworkImage(auth.user.photoURL)
+                          : ExactAssetImage('assets/images/user.png'),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                 ),
                 onTap: () {
-                  _scaffoldKey.currentState.openDrawer();
+                  // _scaffoldKey.currentState.openDrawer();
+                  ExtendedNavigator.of(context)
+                      .push(Routes.profileSettingScreen);
                 },
               )
             ],
@@ -103,7 +110,9 @@ class _AppScaffoldState extends State<AppScaffold> {
           body: widget.body,
           drawer: widget.drawer != null ? widget.drawer : null,
           bottomNavigationBar: widget.footer != null ? widget.footer : null,
-          floatingActionButtonLocation: widget.fabLocation != null ? widget.fabLocation : FloatingActionButtonLocation.endFloat ,
+          floatingActionButtonLocation: widget.fabLocation != null
+              ? widget.fabLocation
+              : FloatingActionButtonLocation.endFloat,
           floatingActionButton: widget.fab != null ? widget.fab : null,
         ),
       ),
