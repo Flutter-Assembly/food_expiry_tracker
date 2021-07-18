@@ -16,8 +16,8 @@ class AppTitle extends StatelessWidget {
           TextSpan(
             text: 'Rack',
             style: innerApp
-                ? kHeadingText2.copyWith(color: kDeepYellow)
-                : kHeadingText1.copyWith(color: kDeepYellow),
+                ? kHeadingText2.copyWith(color: kPrimaryYellow)
+                : kHeadingText1.copyWith(color: kPrimaryYellow),
           ),
         ],
       ),

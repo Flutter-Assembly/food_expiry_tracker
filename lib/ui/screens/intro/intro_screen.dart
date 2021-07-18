@@ -46,7 +46,7 @@ class _IntroScreenState extends State<IntroScreen> {
               Expanded(
                 flex: 1,
                 child: Center(
-                  child:  AppTitle(innerApp: false),
+                  child: AppTitle(innerApp: false),
                 ),
               ),
               Expanded(
@@ -64,7 +64,7 @@ class _IntroScreenState extends State<IntroScreen> {
               SizedBox(height: SizeConfig.blockSizeHorizontal * 2),
               Text(
                 intro.introList[_slideIndex].title,
-                style: kHeadingText1.copyWith(color: kDeepYellow),
+                style: kHeadingText1.copyWith(color: kPrimaryYellow),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.blockSizeHorizontal * 2),
@@ -104,7 +104,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                       intro.introList.length - 1
                                   ? ButtonSolid(
                                       title: 'Next',
-                                      bgColor: kDeepYellow,
+                                      bgColor: kPrimaryYellow,
                                       textColor: kPrimaryColor,
                                       onPressed: () {
                                         setState(
@@ -120,7 +120,7 @@ class _IntroScreenState extends State<IntroScreen> {
                                     )
                                   : ButtonSolid(
                                       title: 'Get Started',
-                                      bgColor: kDeepYellow,
+                                      bgColor: kPrimaryYellow,
                                       textColor: kPrimaryColor,
                                       onPressed: () {
                                         ExtendedNavigator.of(context)

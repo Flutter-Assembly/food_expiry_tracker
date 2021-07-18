@@ -4,6 +4,7 @@ import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/providers/user_provider.dart';
 import 'package:food_expiry_tracker/ui/core/app_title.dart';
 import 'package:food_expiry_tracker/ui/core/button_solid.dart';
+import 'package:food_expiry_tracker/ui/core/custom_textform_field.dart';
 import 'package:food_expiry_tracker/ui/core/dialog.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
@@ -116,22 +117,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 4,
                 ),
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  style: kHeadingText3,
+                CustomTextFormField(
+                  hintText: 'Email',
+                  textStyle: kHeadingText3,
                   controller: emailController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    hintText: 'Email',
-                    hintStyle: kBodyText4,
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 7.0,
-                      horizontal: 15.0,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
+                  keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value.isEmpty) {
                       return "The email field cannot be empty";
@@ -148,23 +138,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: SizeConfig.safeBlockVertical * 4,
                 ),
-                TextFormField(
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  style: kHeadingText3,
+                CustomTextFormField(
+                  hintText: 'Password',
+                  isPasswordField: true,
+                  textStyle: kHeadingText3,
                   controller: passwordController,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    hintText: 'Password',
-                    hintStyle: kBodyText4,
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 7.0,
-                      horizontal: 15.0,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                  ),
                   validator: (value) {
                     if (value.isEmpty) {
                       return "The password field cannot be empty";
