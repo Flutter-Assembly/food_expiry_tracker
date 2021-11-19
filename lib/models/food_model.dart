@@ -1,5 +1,4 @@
 class Food {
-
   static const tblFood = 'foods';
   static const colId = 'id';
   static const colFoodName = 'food_name';
@@ -27,13 +26,13 @@ class Food {
     categoryId = json[colCategoryId];
   }
 
-  int id;
-  String foodName;
-  String purchaseDate;
-  String expiredDate;
-  int priority;
-  int spaceId;
-  int categoryId;
+  int? id;
+  String? foodName;
+  String? purchaseDate;
+  String? expiredDate;
+  int? priority;
+  int? spaceId;
+  int? categoryId;
 
   Map<String, dynamic> toMap() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

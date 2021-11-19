@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 
 class Indicator extends StatelessWidget {
-  Indicator({this.active});
+  Indicator({this.active = true});
   final bool active;
 
   @override

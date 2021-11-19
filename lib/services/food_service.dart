@@ -39,16 +39,16 @@ class FoodService {
   Future<List<Food>> fetchAll() async {
     //returns number of items inserted as an integer
     Database db = await _dbHelper.database;
-    List<Map> foods = await db.query(Food.tblFood);
+    List<Map<String, dynamic>> foods = await db.query(Food.tblFood);
     return foods.length == 0
         ? []
         : foods.map((food) => Food.fromMap(food)).toList();
   }
 
-  Future<Food> fetchOne(int id) async {
+  Future<Food?> fetchOne(int id) async {
     //returns number of items inserted as an integer
     Database db = await _dbHelper.database;
-    List<Map> foods = await db
+    List<Map<String, dynamic>> foods = await db
         .query(Food.tblFood, where: '${Food.colId} = ?', whereArgs: [id]);
     return foods.length > 0 ? Food.fromMap(foods.first) : null;
   }

@@ -6,11 +6,11 @@ import 'package:google_sign_in/google_sign_in.dart';
 enum Status { Uninitialized, Authenticated, Authenticating, Unauthenticated }
 
 class UserProvider with ChangeNotifier {
-  FirebaseAuth _auth;
-  User _user;
-  GoogleSignIn _googleSignIn;
-  Status _status = Status.Uninitialized;
-  String _errMessage = 'Something went wrong, try again';
+  late FirebaseAuth _auth;
+  late User _user;
+  late GoogleSignIn _googleSignIn;
+  late Status _status = Status.Uninitialized;
+  late String _errMessage = 'Something went wrong, try again';
 
   UserProvider.initialize()
       : _auth = FirebaseAuth.instance,
@@ -77,15 +77,15 @@ class UserProvider with ChangeNotifier {
     try {
       _status = Status.Authenticating;
       notifyListeners();
-      final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+          await googleUser!.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
       await _auth.signInWithCredential(credential);
-      await storeUserData(user.displayName, user.email);
+      await storeUserData(user.displayName!, user.email!);
       return true;
     } catch (e) {
       print('Google pop up error');
@@ -105,7 +105,7 @@ class UserProvider with ChangeNotifier {
     return Future.delayed(Duration.zero);
   }
 
-  Future<void> _onAuthStateChanged(User firebaseUser) async {
+  void _onAuthStateChanged(User? firebaseUser) async {
     if (firebaseUser == null) {
       _status = Status.Unauthenticated;
     } else {
@@ -126,6 +126,6 @@ class UserProvider with ChangeNotifier {
       "updatedAt": FieldValue.serverTimestamp()
     });
     await user.reload();
-    _user = _auth.currentUser;
+    _user = _auth.currentUser!;
   }
 }

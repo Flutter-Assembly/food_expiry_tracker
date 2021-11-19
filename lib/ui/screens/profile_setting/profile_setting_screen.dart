@@ -24,7 +24,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
             size: 28.0,
           ),
           color: kPrimaryYellow,
-          onPressed: () => ExtendedNavigator.of(context).pop(),
+          onPressed: () => context.router.pop(),
         ),
         centerTitle: true,
         title: Text(
@@ -35,8 +35,7 @@ class _ProfileSettingScreenState extends State<ProfileSettingScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 16.0, right: 15),
             child: InkWell(
-              onTap: () =>
-                  ExtendedNavigator.of(context).push(Routes.editProfileScreen),
+              onTap: () => context.router.push(EditProfileScreenRoute()),
               child: Text(
                 'Edit Profile',
                 style: kHeadingText3Medium.copyWith(

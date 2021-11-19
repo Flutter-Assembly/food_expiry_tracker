@@ -9,91 +9,90 @@ class AddFoodScreen extends StatelessWidget {
   final TextEditingController datePurchasedController = TextEditingController();
   final TextEditingController dateExpiredController = TextEditingController();
 
-
   final FocusNode foodNameFocusNode = FocusNode();
   final FocusNode descriptionFocusNode = FocusNode();
   final FocusNode datePurchasedFocusNode = FocusNode();
   final FocusNode dateExpiredFocusNode = FocusNode();
 
+  void foodNameOnChanged(BuildContext context, String value) =>
+      context.read<FoodItem>().setfoodName(value);
+  void foodDescriptionOnChanged(BuildContext context, String value) =>
+      context.read<FoodItem>().setfoodDescription(value);
+  void datePurchasedOnChanged(BuildContext context, String value) =>
+      context.read<FoodItem>().setdatePurchased(value);
+  void dateExpiredOnChanged(BuildContext context, String value) =>
+      context.read<FoodItem>().setdateExpired(value);
 
-  void foodNameOnChanged(BuildContext context, String value) => context.read<FoodItem>().setfoodName(value);
-  void foodDescriptionOnChanged(BuildContext context, String value) => context.read<FoodItem>().setfoodDescription(value);
-  void datePurchasedOnChanged(BuildContext context, String value) => context.read<FoodItem>().setdatePurchased(value);
-  void dateExpiredOnChanged(BuildContext context, String value) => context.read<FoodItem>().setdateExpired(value);
-  
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.white,
-        title: Text('Add new Food', style: t7,),
-        centerTitle: true,
-        automaticallyImplyLeading: true,
-        iconTheme: IconThemeData(color: c3),
-        bottom: PreferredSize(
-          child: Divider(
-            color: Colors.grey,
-            thickness: 1,
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          title: Text(
+            'Add new Food',
+            style: t7,
           ),
-          preferredSize: Size.fromHeight(0)
-        )
-      ),
-
+          centerTitle: true,
+          automaticallyImplyLeading: true,
+          iconTheme: IconThemeData(color: c3),
+          bottom: PreferredSize(
+              child: Divider(
+                color: Colors.grey,
+                thickness: 1,
+              ),
+              preferredSize: Size.fromHeight(0))),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             heading('Category'),
-            buildFoodCategories(context, '${context.watch<FoodItem>().category}'),
+            buildFoodCategories(
+                context, '${context.watch<FoodItem>().category}'),
             buildTextFields(
-              context: context,
-              label: 'Food Name', 
-              hint: 'Food Name', 
-              controller: foodNameController, 
-              focusNode: foodNameFocusNode, 
-              onchanged: foodNameOnChanged),
-            buildFoodQuantities(context, '${context.watch<FoodItem>().quantityDescription}'),
+                context: context,
+                label: 'Food Name',
+                hint: 'Food Name',
+                controller: foodNameController,
+                focusNode: foodNameFocusNode,
+                onchanged: foodNameOnChanged),
+            buildFoodQuantities(
+                context, '${context.watch<FoodItem>().quantityDescription}'),
             buildFoodQuantityCounter(context),
             buildTextFields(
-              context: context,
-              label: 'Description', 
-              hint: 'Description', 
-              controller: descriptionController, 
-              focusNode:descriptionFocusNode,
-              onchanged: foodDescriptionOnChanged
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: buildTextFields(
+                context: context,
+                label: 'Description',
+                hint: 'Description',
+                controller: descriptionController,
+                focusNode: descriptionFocusNode,
+                onchanged: foodDescriptionOnChanged),
+            Row(children: [
+              Expanded(
+                child: buildTextFields(
                     context: context,
-                    label:'Date purchased', 
-                    hint: 'Date purchased',  
-                    controller: datePurchasedController, 
+                    label: 'Date purchased',
+                    hint: 'Date purchased',
+                    controller: datePurchasedController,
                     focusNode: datePurchasedFocusNode,
                     onchanged: datePurchasedOnChanged,
-                    addHelper: true
-                  ),
-                ),
-                SizedBox(width: 40),
-                Expanded(
-                  child: buildTextFields(
+                    addHelper: true),
+              ),
+              SizedBox(width: 40),
+              Expanded(
+                child: buildTextFields(
                     context: context,
-                    label: 'Expiry Date', 
-                    hint: 'Expiry Date', 
-                    controller: dateExpiredController, 
+                    label: 'Expiry Date',
+                    hint: 'Expiry Date',
+                    controller: dateExpiredController,
                     focusNode: dateExpiredFocusNode,
                     onchanged: dateExpiredOnChanged,
-                    addHelper: true
-                  ),
-                )
-              ]
-            ),
-            buildSelectStorageLocation(context, context.watch<FoodItem>().storageSpace),
+                    addHelper: true),
+              )
+            ]),
+            buildSelectStorageLocation(
+                context, context.watch<FoodItem>().storageSpace),
             Padding(
               padding: const EdgeInsets.only(top: 20.0),
               child: heading('Priority'),
@@ -106,27 +105,21 @@ class AddFoodScreen extends StatelessWidget {
             buildImageContainer(context),
             Padding(
               padding: EdgeInsets.all(20),
-              child: Row(
-                children: [
-                  Expanded(
-                    child:buildAddFoodButton(
-                      backgroundColor: c9,
-                      textColor: c8,
-                      text: 'Cancel',
-                      onTap: () => print('Delete')
-                    )
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child:buildAddFoodButton(
-                      backgroundColor: c5,
-                      textColor: Colors.white,
-                      text: 'Save',
-                      onTap: () {}
-                    )
-                  ),
-                ]
-              ),
+              child: Row(children: [
+                Expanded(
+                    child: buildAddFoodButton(
+                        backgroundColor: c9,
+                        textColor: c8,
+                        text: 'Cancel',
+                        onTap: () => print('Delete'))),
+                SizedBox(width: 20),
+                Expanded(
+                    child: buildAddFoodButton(
+                        backgroundColor: c5,
+                        textColor: Colors.white,
+                        text: 'Save',
+                        onTap: () {})),
+              ]),
             )
           ],
         ),

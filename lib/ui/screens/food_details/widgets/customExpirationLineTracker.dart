@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CustomExpirationLineTracker extends StatefulWidget {
   final double expirationPercent;
 
-  CustomExpirationLineTracker({@required this.expirationPercent});
+  CustomExpirationLineTracker({required this.expirationPercent});
 
   @override
   _CustomProgressCardState createState() => _CustomProgressCardState();
@@ -12,15 +12,15 @@ class CustomExpirationLineTracker extends StatefulWidget {
 
 class _CustomProgressCardState extends State<CustomExpirationLineTracker> {
   GlobalKey _containerGlobalKey = GlobalKey();
-  double _containerWidth;
+  double? _containerWidth;
 
   @override
   void initState() {
     super.initState();
     //To get the width of progress container.
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       setState(() {
-        _containerWidth = _containerGlobalKey.currentContext.size.width;
+        _containerWidth = _containerGlobalKey.currentContext!.size!.width;
       });
     });
   }

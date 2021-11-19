@@ -34,12 +34,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //to handle back button pressed
   Future<bool> _systemBackButtonPressed() {
-    if (_navigatorKeys[_selectedIndex].currentState.canPop()) {
+    if (_navigatorKeys[_selectedIndex].currentState!.canPop()) {
       _navigatorKeys[_selectedIndex]
-          .currentState
+          .currentState!
           .pop(_navigatorKeys[_selectedIndex].currentContext);
+      return Future<bool>.value(false);
     } else {
       SystemChannels.platform.invokeMethod<void>('SystemNavigator.pop');
+      return Future<bool>.value(true);
     }
   }
 
@@ -49,13 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: _systemBackButtonPressed,
       child: AppScaffold(
-        title: navigationProvider.activePage.title,
+        title: navigationProvider.activePage.title!,
         drawer: AppDrawer(),
         body: IndexedStack(
           index: navigationProvider.currentIndex,
           children: navigationProvider.bottomNavBodyList
               .map<Widget>((PageBody pages) {
-            return pages.body;
+            return pages.body!;
           }).toList(),
         ),
         footer: FABBottomAppBar(
@@ -80,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
         fabLocation: FloatingActionButtonLocation.centerDocked,
         fab: FloatingActionButton(
           onPressed: () {
-            ExtendedNavigator.of(context).push(Routes.addFoodScreen);
+            context.router.push(AddFoodScreenRoute());
           },
           tooltip: 'Add Food',
           child: Icon(Icons.add),

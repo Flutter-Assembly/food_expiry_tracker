@@ -15,7 +15,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider.value(value: UserProvider.initialize()),
         ChangeNotifierProvider.value(value: IntroProvider.initialize()),
-        ChangeNotifierProvider.value(value: NavigationProvider.initialize()), 
+        ChangeNotifierProvider.value(value: NavigationProvider.initialize()),
         ChangeNotifierProvider(create: (_) => FoodItem()),
       ],
       child: Builder(

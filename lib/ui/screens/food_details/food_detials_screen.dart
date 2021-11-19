@@ -24,7 +24,7 @@ class _FoodDetailsScreenState extends State<FoodDetailsScreen> {
             size: 28.0,
           ),
           color: Color(0XFF454545),
-          onPressed: () => ExtendedNavigator.of(context).pop(),
+          onPressed: () => context.router.pop(),
         ),
         title: Text(
           'Spaghetti',

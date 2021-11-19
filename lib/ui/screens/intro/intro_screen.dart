@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/providers/intro_provider.dart';
@@ -24,12 +24,6 @@ class _IntroScreenState extends State<IntroScreen> {
         _slideIndex = index;
       },
     );
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
   }
 
   @override
@@ -63,13 +57,13 @@ class _IntroScreenState extends State<IntroScreen> {
               controlButtons(_slideIndex),
               SizedBox(height: SizeConfig.blockSizeHorizontal * 2),
               Text(
-                intro.introList[_slideIndex].title,
+                intro.introList[_slideIndex].title!,
                 style: kHeadingText1.copyWith(color: kPrimaryYellow),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.blockSizeHorizontal * 2),
               Text(
-                intro.introList[_slideIndex].description,
+                intro.introList[_slideIndex].description!,
                 style: kBodyText3,
                 textAlign: TextAlign.center,
               ),
@@ -91,8 +85,8 @@ class _IntroScreenState extends State<IntroScreen> {
                                 title: 'Skip',
                                 bgColor: kPrimaryColor,
                                 onPressed: () {
-                                  ExtendedNavigator.of(context)
-                                      .popAndPush(Routes.welcomeScreen);
+                                  context.router
+                                      .popAndPush(WelcomeScreenRoute());
                                 },
                               ),
                             ),
@@ -123,8 +117,8 @@ class _IntroScreenState extends State<IntroScreen> {
                                       bgColor: kPrimaryYellow,
                                       textColor: kPrimaryColor,
                                       onPressed: () {
-                                        ExtendedNavigator.of(context)
-                                            .popAndPush(Routes.welcomeScreen);
+                                        context.router
+                                            .popAndPush(WelcomeScreenRoute());
                                       },
                                     ),
                             ),

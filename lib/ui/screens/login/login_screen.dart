@@ -23,34 +23,31 @@ class _LoginScreenState extends State<LoginScreen> {
   final _loginFormKey = GlobalKey<FormState>();
   final _dialogKeyLoader = new GlobalKey<State>();
 
-  TextEditingController emailController;
-  TextEditingController passwordController;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     emailController.dispose();
     passwordController.dispose();
+    super.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
   }
 
   void displayError(String error) {
-    Navigator.of(_dialogKeyLoader.currentContext, rootNavigator: true).pop();
-    _loginScaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.red,
-        content: Text(error),
-        duration: Duration(milliseconds: 2000),
-      ),
-    );
+    Navigator.of(_dialogKeyLoader.currentContext!, rootNavigator: true).pop();
+    ScaffoldMessenger.of(_loginScaffoldKey.currentContext!)
+        .showSnackBar(SnackBar(
+      backgroundColor: Colors.red,
+      content: Text(error),
+      duration: Duration(milliseconds: 2000),
+    ));
   }
 
   @override
@@ -102,11 +99,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       print('NOT SIGNED IN');
                     } else {
                       print('SIGNED IN');
-                      Navigator.of(_dialogKeyLoader.currentContext,
+                      Navigator.of(_dialogKeyLoader.currentContext!,
                               rootNavigator: true)
                           .pop(); //close the dialog
-                      ExtendedNavigator.of(context)
-                          .popAndPush(Routes.homeScreenController);
+                      context.router.popAndPush(HomeScreenControllerRoute());
                     }
                   },
                 ),
@@ -123,16 +119,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return "The email field cannot be empty";
                     }
-                    Pattern pattern =
+                    String pattern =
                         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                     RegExp regex = new RegExp(pattern);
                     if (!regex.hasMatch(value))
                       return 'Please make sure your email address is valid';
-                    else
-                      return null;
+                    return null;
                   },
                 ),
                 SizedBox(
@@ -144,12 +139,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   textStyle: kHeadingText3,
                   controller: passwordController,
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return "The password field cannot be empty";
                     } else if (value.length < 6) {
                       return "the password has to be at least 6 characters long";
+                    } else {
+                      return null;
                     }
-                    return null;
                   },
                 ),
                 SizedBox(
@@ -159,17 +155,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   title: 'Sign in now',
                   bgColor: kPrimaryColor,
                   onPressed: () async {
-                    if (_loginFormKey.currentState.validate()) {
+                    if (_loginFormKey.currentState!.validate()) {
                       Dialogs.showLoadingDialog(context, _dialogKeyLoader);
                       if (!await user.signIn(
                           emailController.text, passwordController.text)) {
                         displayError(user.errMessage);
                       } else {
-                        Navigator.of(_dialogKeyLoader.currentContext,
+                        Navigator.of(_dialogKeyLoader.currentContext!,
                                 rootNavigator: true)
                             .pop(); //close the dialog
-                        ExtendedNavigator.of(context)
-                            .popAndPush(Routes.homeScreenController);
+                        context.router.popAndPush(HomeScreenControllerRoute());
                       }
                     }
                   },
@@ -181,8 +176,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   textLabel: 'Not yet registered? ',
                   textAction: 'Sign up',
                   onTap: () {
-                    ExtendedNavigator.of(context)
-                        .popAndPush(Routes.signupScreen);
+                    context.router.popAndPush(SignupScreenRoute());
                   },
                 )
               ],

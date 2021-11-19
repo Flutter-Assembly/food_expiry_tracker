@@ -22,22 +22,20 @@ class _SignupScreenState extends State<SignupScreen> {
   final _signupFormKey = GlobalKey<FormState>();
   final _dialogSignupKeyLoader = new GlobalKey<State>();
 
-  TextEditingController nameController;
-  TextEditingController emailController;
-  TextEditingController passwordController;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    super.dispose();
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
@@ -45,15 +43,21 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void displayError(String error) {
-    Navigator.of(_dialogSignupKeyLoader.currentContext, rootNavigator: true)
+    Navigator.of(_dialogSignupKeyLoader.currentContext!, rootNavigator: true)
         .pop();
-    _signupScaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.red,
-        content: Text(error),
-        duration: Duration(milliseconds: 2000),
-      ),
-    );
+    ScaffoldMessenger.of(_signupScaffoldKey.currentContext!)
+        .showSnackBar(SnackBar(
+      backgroundColor: Colors.red,
+      content: Text(error),
+      duration: Duration(milliseconds: 2000),
+    ));
+    // _signupScaffoldKey.currentState!.showSnackBar(
+    //   SnackBar(
+    //     backgroundColor: Colors.red,
+    //     content: Text(error),
+    //     duration: Duration(milliseconds: 2000),
+    //   ),
+    // );
   }
 
   @override
@@ -103,11 +107,10 @@ class _SignupScreenState extends State<SignupScreen> {
                   if (!await user.signInWithGoogle()) {
                     displayError(user.errMessage);
                   } else {
-                    Navigator.of(_dialogSignupKeyLoader.currentContext,
+                    Navigator.of(_dialogSignupKeyLoader.currentContext!,
                             rootNavigator: true)
                         .pop();
-                    ExtendedNavigator.of(context)
-                        .popAndPush(Routes.homeScreenController);
+                    context.router.popAndPush(HomeScreenControllerRoute());
                   }
                 }),
                 SizedBox(
@@ -135,7 +138,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return "The name field cannot be empty";
                     } else if (value.length < 3) {
                       return "the name has to be at least 3 characters long";
@@ -163,10 +166,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return "The email field cannot be empty";
                     }
-                    Pattern pattern =
+                    String pattern =
                         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
                     RegExp regex = new RegExp(pattern);
                     if (!regex.hasMatch(value))
@@ -196,7 +199,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   validator: (value) {
-                    if (value.isEmpty) {
+                    if (value!.isEmpty) {
                       return "The password field cannot be empty";
                     } else if (value.length < 6) {
                       return "the password has to be at least 6 characters long";
@@ -211,18 +214,18 @@ class _SignupScreenState extends State<SignupScreen> {
                   title: 'Sign up now',
                   bgColor: kPrimaryColor,
                   onPressed: () async {
-                    if (_signupFormKey.currentState.validate()) {
+                    if (_signupFormKey.currentState!.validate()) {
                       Dialogs.showLoadingDialog(
                           context, _dialogSignupKeyLoader);
                       if (!await user.signUp(emailController.text,
                           passwordController.text, nameController.text)) {
                         displayError(user.errMessage);
                       } else {
-                        Navigator.of(_dialogSignupKeyLoader.currentContext,
+                        Navigator.of(_dialogSignupKeyLoader.currentContext!,
                                 rootNavigator: true)
                             .pop();
-                        ExtendedNavigator.of(context)
-                            .popAndPush(Routes.homeScreenController);
+                        context.router.popAndPush(HomeScreenControllerRoute());
+
                       }
                     }
                   },
@@ -234,8 +237,8 @@ class _SignupScreenState extends State<SignupScreen> {
                   textLabel: 'Already registered? ',
                   textAction: 'Sign in',
                   onTap: () {
-                    ExtendedNavigator.of(context)
-                        .popAndPush(Routes.loginScreen);
+                    context.router.popAndPush(LoginScreenRoute());
+
                   },
                 )
               ],

@@ -17,14 +17,15 @@ class _AppDrawerState extends State<AppDrawer> {
   _navigateToScreen(BuildContext context, DrawerMenu activeMenu) {
     //close drawer
     Navigator.of(context).pop();
-    if (activeMenu.isBodyView) {
+    if (activeMenu.isBodyView!) {
       Provider.of<NavigationProvider>(context, listen: false).activeDrawerMenu =
-          activeMenu.menuRoute;
+          activeMenu.menuRoute!;
       Provider.of<NavigationProvider>(context, listen: false)
-          .setCurrentIndexByRouteName(activeMenu.menuRoute);
+          .setCurrentIndexByRouteName(activeMenu.menuRoute!);
     } else {
       // Navigator.pushNamed(context, '${activeMenu.menuRoute}');
-      ExtendedNavigator.of(context).push('${activeMenu.menuRoute}');
+      context.router.push(activeMenu.menuRoute!);
+      // ExtendedNavigator.of(context).push('${activeMenu.menuRoute}');
     }
   }
 
@@ -45,8 +46,8 @@ class _AppDrawerState extends State<AppDrawer> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(auth.user.displayName),
-            accountEmail: Text(auth.user.email),
+            accountName: Text(auth.user.displayName!),
+            accountEmail: Text(auth.user.email!),
             decoration: BoxDecoration(
               color: kPrimaryColor,
               image: DecorationImage(
@@ -65,7 +66,7 @@ class _AppDrawerState extends State<AppDrawer> {
               },
               child: CircleAvatar(
                 backgroundImage: auth.user.photoURL != null
-                    ? NetworkImage(auth.user.photoURL)
+                    ? NetworkImage(auth.user.photoURL!) as ImageProvider
                     : ExactAssetImage('assets/images/user.png'),
               ),
             ),

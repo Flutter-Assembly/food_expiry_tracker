@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 
 class FoodItem with ChangeNotifier {
-  String _category;
-  String _foodName;
-  String _quantityDescription;
+  String? _category;
+  late String _foodName;
+  String? _quantityDescription;
   int _quantityValue = 1;
-  String _description;
-  String _datePurchased;
-  String _dateExpired;
-  int _storageSpace;
-  int _priority;
-
+  String? _description;
+  String? _datePurchased;
+  String? _dateExpired;
+  int? _storageSpace;
+  int? _priority;
 
   // category
-  String get category => _category;
-  
+  String? get category => _category;
+
   void setCategory(String category) {
     _category = category;
     notifyListeners();
@@ -29,7 +28,7 @@ class FoodItem with ChangeNotifier {
   }
 
   // quantityDescription
-  String get quantityDescription => _quantityDescription;
+  String? get quantityDescription => _quantityDescription;
 
   void setquantityDescription(String quantityDescription) {
     _quantityDescription = quantityDescription;
@@ -37,8 +36,7 @@ class FoodItem with ChangeNotifier {
   }
 
   // quantityValue
-  int get quantityValue =>  _quantityValue;
-
+  int? get quantityValue => _quantityValue;
 
   void incrementquantityValue() {
     _quantityValue++;
@@ -51,8 +49,7 @@ class FoodItem with ChangeNotifier {
   }
 
   // description
-  String get foodDescription =>  _description;
-  
+  String? get foodDescription => _description;
 
   void setfoodDescription(String description) {
     _description = description;
@@ -60,8 +57,7 @@ class FoodItem with ChangeNotifier {
   }
 
   // datePurchased
-  String get datePurchased =>  _datePurchased;
-  
+  String? get datePurchased => _datePurchased;
 
   void setdatePurchased(String datePurchased) {
     _datePurchased = datePurchased;
@@ -69,8 +65,7 @@ class FoodItem with ChangeNotifier {
   }
 
   // dateExpired
-  String get dateExpired =>  _dateExpired;
-  
+  String? get dateExpired => _dateExpired;
 
   void setdateExpired(String dateExpired) {
     _dateExpired = dateExpired;
@@ -78,21 +73,18 @@ class FoodItem with ChangeNotifier {
   }
 
   // storageSpace
-  int get storageSpace =>  _storageSpace;
-  
+  int? get storageSpace => _storageSpace;
 
-  void setstorageSpace(int storageSpace) {
+  void setStorageSpace(int storageSpace) {
     _storageSpace = storageSpace;
     notifyListeners();
   }
 
   // priority
-  int get priority =>  _priority;
-  
+  int? get priority => _priority;
 
   void setpriority(int priority) {
     _priority = priority;
     notifyListeners();
   }
-
 }

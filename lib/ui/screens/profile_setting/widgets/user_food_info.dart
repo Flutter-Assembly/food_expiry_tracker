@@ -8,8 +8,8 @@ class UserFoodInfo extends StatelessWidget {
   final String title;
 
   UserFoodInfo({
-    @required this.title,
-    @required this.amount,
+    required this.title,
+    required this.amount,
   });
 
   @override

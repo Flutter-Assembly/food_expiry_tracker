@@ -6,6 +6,8 @@ import 'package:food_expiry_tracker/ui/core/button_outline.dart';
 import 'package:food_expiry_tracker/ui/core/button_solid.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
+import 'package:food_expiry_tracker/ui/screens/login/login_screen.dart';
+import 'package:food_expiry_tracker/ui/screens/signup/signup_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -13,12 +15,6 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,8 +72,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               title: 'Create Account',
                               bgColor: kPrimaryColor,
                               onPressed: () {
-                                ExtendedNavigator.of(context)
-                                    .popAndPush(Routes.signupScreen);
+                                context.router.popAndPush(SignupScreenRoute());
                               },
                             ),
                           ),
@@ -90,8 +85,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               title: 'Login Now',
                               bgColor: kPrimaryYellow,
                               onPressed: () {
-                                ExtendedNavigator.of(context)
-                                    .popAndPush(Routes.loginScreen);
+                                context.router.popAndPush(LoginScreenRoute());
                               },
                             ),
                           ),

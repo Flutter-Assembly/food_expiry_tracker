@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 class FABBottomAppBarItem {
   FABBottomAppBarItem({this.iconData, this.text});
-  IconData iconData;
-  String text;
+  IconData? iconData;
+  String? text;
 }
 
 class FABBottomAppBar extends StatefulWidget {
@@ -20,17 +20,17 @@ class FABBottomAppBar extends StatefulWidget {
     this.notchedShape,
     this.onTabSelected,
   }) {
-    assert(this.items.length == 2 || this.items.length == 4);
+    assert(this.items!.length == 2 || this.items!.length == 4);
   }
-  final List<FABBottomAppBarItem> items;
-  final String centerItemText;
+  final List<FABBottomAppBarItem>? items;
+  final String? centerItemText;
   final double height;
   final double iconSize;
-  final Color backgroundColor;
-  final Color color;
-  final Color selectedColor;
-  final NotchedShape notchedShape;
-  final ValueChanged<int> onTabSelected;
+  final Color? backgroundColor;
+  final Color? color;
+  final Color? selectedColor;
+  final NotchedShape? notchedShape;
+  final ValueChanged<int>? onTabSelected;
 
   @override
   State<StatefulWidget> createState() => FABBottomAppBarState();
@@ -39,14 +39,14 @@ class FABBottomAppBar extends StatefulWidget {
 class FABBottomAppBarState extends State<FABBottomAppBar> {
 
   _updateIndex(int index) {
-    widget.onTabSelected(index);
+    widget.onTabSelected!(index);
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> items = List.generate(widget.items.length, (int index) {
+    List<Widget> items = List.generate(widget.items!.length, (int index) {
       return _buildTabItem(
-        item: widget.items[index],
+        item: widget.items![index],
         index: index,
         onPressed: _updateIndex,
       );
@@ -84,11 +84,11 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
   }
 
   Widget _buildTabItem({
-    FABBottomAppBarItem item,
-    int index,
-    ValueChanged<int> onPressed,
+    FABBottomAppBarItem? item,
+    int? index,
+    ValueChanged<int>? onPressed,
   }) {
-    Color color = Provider.of<NavigationProvider>(context).currentIndex == index
+    Color? color = Provider.of<NavigationProvider>(context).currentIndex == index
         ? widget.selectedColor
         : widget.color;
     return Expanded(
@@ -97,14 +97,14 @@ class FABBottomAppBarState extends State<FABBottomAppBar> {
         child: Material(
           type: MaterialType.transparency,
           child: InkWell(
-            onTap: () => onPressed(index),
+            onTap: () => onPressed!(index!),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(item.iconData, color: color, size: widget.iconSize),
+                Icon(item!.iconData, color: color, size: widget.iconSize),
                 Text(
-                  item.text,
+                  item.text!,
                   style: TextStyle(color: color),
                   overflow: TextOverflow.ellipsis,
                 )
