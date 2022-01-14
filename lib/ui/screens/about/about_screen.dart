@@ -24,7 +24,7 @@ class _AboutScreenState extends State<AboutScreen> {
             size: 28.0,
           ),
           color: Colors.black,
-          onPressed: () => ExtendedNavigator.of(context).pop(),
+          onPressed: () => context.router.pop(),
         ),
       ),
       body: Padding(

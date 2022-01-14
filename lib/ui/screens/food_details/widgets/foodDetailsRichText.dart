@@ -5,7 +5,7 @@ class FoodDetailsRichText extends StatelessWidget {
   final String title;
   final String subTitle;
 
-  FoodDetailsRichText({@required this.title, @required this.subTitle});
+  FoodDetailsRichText({required this.title, required this.subTitle});
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -14,9 +14,9 @@ class PantryRackInfo extends StatelessWidget {
 
   PantryRackInfo({
     this.hasAmount = true,
-    @required this.infoTitle,
-    @required this.infoAmount,
-    @required this.infoIconName,
+    required this.infoTitle,
+    required this.infoAmount,
+    required this.infoIconName,
     this.hasBottomDivider = true,
   });
 

@@ -10,18 +10,18 @@ import 'app_title.dart';
 
 class AppScaffold extends StatefulWidget {
   final Widget title;
-  final Widget leading;
+  final Widget? leading;
   final Widget body;
-  final Widget tabBar;
-  final Widget footer;
-  final Widget fab;
-  final Widget drawer;
-  final FloatingActionButtonLocation fabLocation;
+  final PreferredSizeWidget? tabBar;
+  final Widget? footer;
+  final Widget? fab;
+  final Widget? drawer;
+  final FloatingActionButtonLocation? fabLocation;
 
   const AppScaffold(
-      {Key key,
-      @required this.body,
-      @required this.title,
+      {Key? key,
+      required this.body,
+      required this.title,
       this.leading,
       this.tabBar,
       this.footer,
@@ -65,7 +65,7 @@ class _AppScaffoldState extends State<AppScaffold> {
                       size: 32,
                     ),
                     onPressed: () {
-                      _scaffoldKey.currentState.openDrawer();
+                      _scaffoldKey.currentState!.openDrawer();
                     },
                   ),
             actions: [
@@ -78,7 +78,7 @@ class _AppScaffoldState extends State<AppScaffold> {
                   ),
                 ),
                 onTap: () {
-                  ExtendedNavigator.of(context).push(Routes.searchScreen);
+                  context.router.push(SearchScreenRoute());
                 },
               ),
               SizedBox(
@@ -92,7 +92,7 @@ class _AppScaffoldState extends State<AppScaffold> {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: auth.user.photoURL != null
-                          ? NetworkImage(auth.user.photoURL)
+                          ? NetworkImage(auth.user.photoURL!) as ImageProvider
                           : ExactAssetImage('assets/images/user.png'),
                       fit: BoxFit.cover,
                     ),
@@ -101,8 +101,7 @@ class _AppScaffoldState extends State<AppScaffold> {
                 ),
                 onTap: () {
                   // _scaffoldKey.currentState.openDrawer();
-                  ExtendedNavigator.of(context)
-                      .push(Routes.profileSettingScreen);
+                  context.router.push(ProfileSettingScreenRoute());
                 },
               )
             ],

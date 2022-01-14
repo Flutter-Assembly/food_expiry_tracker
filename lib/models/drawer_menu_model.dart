@@ -1,11 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 
 class DrawerMenu {
-  String menuRoute;
-  String menuName;
-  IconData menuIcon;
-  bool isBodyView;
+  PageRouteInfo? menuRoute;
+  String? menuName;
+  IconData? menuIcon;
+  bool? isBodyView;
 
   DrawerMenu({this.menuRoute, this.menuName, this.menuIcon, this.isBodyView});
 
@@ -15,46 +16,46 @@ class DrawerMenu {
   initialize() {
     _menuList = <DrawerMenu>[
       DrawerMenu(
-        menuRoute: Routes.homeScreenController,
+        menuRoute: HomeScreenControllerRoute(),
         menuName: 'Home',
         menuIcon: Icons.home,
         isBodyView: true,
       ),
       DrawerMenu(
-        menuRoute: Routes.addFoodScreen,
+        menuRoute: AddFoodScreenRoute(),
         menuName: 'Add Food',
         menuIcon: Icons.post_add,
         isBodyView: false,
       ),
       DrawerMenu(
-        menuRoute: Routes.storageSummaryScreen,
+        menuRoute: StorageSummaryScreenRoute(),
         menuName: 'Storage',
         menuIcon: Icons.insert_chart_outlined_rounded,
         isBodyView: true,
       ),
       DrawerMenu(
-        menuRoute: Routes.favoriteScreen,
+        menuRoute: FavoriteScreenRoute(),
         menuName: 'Favorite',
         menuIcon: Icons.favorite,
         isBodyView: true,
       ),
       DrawerMenu(
-          menuRoute: Routes.profileSettingScreen,
+          menuRoute: ProfileSettingScreenRoute(),
           menuName: 'Settings',
           menuIcon: Icons.settings,
           isBodyView: true),
       DrawerMenu(
-          menuRoute: Routes.feedbackScreen,
+          menuRoute: FeedbackScreenRoute(),
           menuName: 'Feedback',
           menuIcon: Icons.feedback,
           isBodyView: false),
       DrawerMenu(
-          menuRoute: Routes.faqScreen,
+          menuRoute: FaqScreenRoute(),
           menuName: 'FaQs',
           menuIcon: Icons.help,
           isBodyView: false),
       DrawerMenu(
-          menuRoute: Routes.aboutScreen,
+          menuRoute: AboutScreenRoute(),
           menuName: 'About',
           menuIcon: Icons.phone_android,
           isBodyView: false),

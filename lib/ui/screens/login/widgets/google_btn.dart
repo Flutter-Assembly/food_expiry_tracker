@@ -3,8 +3,8 @@ import 'package:food_expiry_tracker/helpers/size_config.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 
 class GoogleButton extends StatelessWidget {
-  final Function onPressed;
-  GoogleButton({@required this.onPressed});
+  final Function() onPressed;
+  GoogleButton({required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

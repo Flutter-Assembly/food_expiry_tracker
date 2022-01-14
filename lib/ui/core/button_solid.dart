@@ -3,16 +3,16 @@ import 'package:food_expiry_tracker/ui/core/styles.dart';
 
 class ButtonSolid extends StatelessWidget {
   ButtonSolid({
-    @required this.title,
-    @required this.onPressed,
+    required this.title,
+    required this.onPressed,
     this.textColor,
     this.bgColor,
   });
 
-  final Color textColor;
-  final Color bgColor;
+  final Color? textColor;
+  final Color? bgColor;
   final String title;
-  final Function onPressed;
+  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,7 @@ class ButtonSolid extends StatelessWidget {
       height: 40.0,
       onPressed: onPressed,
       shape: RoundedRectangleBorder(
-        borderRadius:
-        BorderRadius.circular(5.0),
+        borderRadius: BorderRadius.circular(5.0),
       ),
     );
   }

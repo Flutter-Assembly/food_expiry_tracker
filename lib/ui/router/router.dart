@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route_annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:food_expiry_tracker/ui/screens/about/about_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/edit_profile_screen.dart';
@@ -11,6 +10,7 @@ import 'package:food_expiry_tracker/ui/screens/home/home_main.dart';
 import 'package:food_expiry_tracker/ui/screens/home/home_screen_controller.dart';
 import 'package:food_expiry_tracker/ui/screens/home/storage_detail_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/search/search_screen.dart';
+import 'package:food_expiry_tracker/ui/screens/settings/settings.dart';
 import 'package:food_expiry_tracker/ui/screens/splash/splash_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/intro/intro_screen.dart';
 import 'package:food_expiry_tracker/ui/screens/storage_summary/storage_summary_screen.dart';
@@ -59,6 +59,8 @@ import 'package:food_expiry_tracker/ui/screens/profile_setting/profile_setting_s
     CustomRoute(
         page: StorageSummaryScreen,
         transitionsBuilder: TransitionsBuilders.fadeIn),
+    CustomRoute(
+        page: SettingsScreen, transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(
         page: SearchScreen,
         transitionsBuilder: TransitionsBuilders.slideBottom),

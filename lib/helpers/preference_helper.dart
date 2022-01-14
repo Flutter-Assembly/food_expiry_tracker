@@ -1,8 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceHelper {
-  static PreferenceHelper _preferenceHelper;
-  static SharedPreferences _preferences;
+  static  PreferenceHelper? _preferenceHelper;
+  static  SharedPreferences? _preferences;
 
   PreferenceHelper._();
 
@@ -13,7 +13,7 @@ class PreferenceHelper {
       await secureStorage._init();
       _preferenceHelper = secureStorage;
     }
-    return _preferenceHelper;
+    return _preferenceHelper!;
   }
   Future _init() async {
     _preferences = await SharedPreferences.getInstance();
@@ -22,12 +22,12 @@ class PreferenceHelper {
   // get string
   static String getString(String key, {String defValue = ''}) {
     if (_preferences == null) return defValue;
-    return _preferences.getString(key) ?? defValue;
+    return _preferences!.getString(key) ?? defValue;
   }
   // put string
   static Future<bool> putString(String key, String value) {
-    if (_preferences == null) return null;
-    return _preferences.setString(key, value);
+    if (_preferences == null) return Future.value(false);
+    return _preferences!.setString(key, value);
   }
 
 }

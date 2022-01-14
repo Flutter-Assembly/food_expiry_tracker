@@ -6,7 +6,7 @@ class AppDetails extends StatelessWidget {
   final String title;
   final String description;
 
-  AppDetails({@required this.title, @required this.description});
+  AppDetails({required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {

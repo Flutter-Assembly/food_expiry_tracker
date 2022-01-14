@@ -1,13 +1,11 @@
 import 'dart:io';
 
-import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:food_expiry_tracker/ui/core/button_solid.dart';
 import 'package:food_expiry_tracker/ui/core/custom_textform_field.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
-import 'package:food_expiry_tracker/ui/router/router.gr.dart';
 import 'package:food_expiry_tracker/utilities/app_constants.dart';
-import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -16,7 +14,7 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  File _image;
+  File? _image;
   final imagePicker = ImagePicker();
 
   Future getImageFromGallery() async {
@@ -43,7 +41,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             size: 28.0,
           ),
           color: Colors.black,
-          onPressed: () => ExtendedNavigator.of(context).pop(),
+          onPressed: () => context.router.pop(),
         ),
         centerTitle: true,
         title: Text(
@@ -72,7 +70,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(40),
                           child: Image.file(
-                            _image,
+                            _image!,
                             height: 85,
                             width: 85,
                           ),

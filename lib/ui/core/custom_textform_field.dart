@@ -3,18 +3,18 @@ import 'package:flutter/services.dart';
 import 'package:food_expiry_tracker/ui/core/styles.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  final double height;
-  final int lengthLimit;
-  final String hintText;
-  final String errorText;
-  final String labelText;
-  final TextStyle textStyle;
+  final double? height;
+  final int? lengthLimit;
+  final String? hintText;
+  final String? errorText;
+  final String? labelText;
+  final TextStyle? textStyle;
   final bool isPasswordField;
   final bool isNumberOnlyInput;
-  final TextInputType keyboardType;
-  final Function(String) validator;
-  final Function(String value) onSave;
-  final TextEditingController controller;
+  final TextInputType? keyboardType;
+  final String? Function(String? value)? validator;
+  final Function(String? value)? onSave;
+  final TextEditingController? controller;
 
   CustomTextFormField({
     this.onSave,
